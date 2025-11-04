@@ -1,0 +1,51 @@
+import { Job } from "../types";
+
+export const SAMPLE_JOBS: Job[] = [
+  {
+    id: "sample-1",
+    title: "Frontend Engineer (React/TypeScript)",
+    company: "RippleWorks",
+    logo_url: null,
+    country: "India",
+    location: "Remote — India",
+    passout: 2024,
+  type: 'job',
+    description: `Build delightful interfaces for our developer tools. You'll work closely with design and backend to ship performant, accessible UI using React, TypeScript and Tailwind.`,
+    apply_link: "https://jobs.rippleworks.example/apply/1",
+    status: "published",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "sample-2",
+    title: "Growth Marketing Intern",
+    company: "SeedSprint",
+    logo_url: null,
+    country: "USA",
+    location: "San Francisco, CA (Hybrid)",
+    passout: 2025,
+  type: 'internship',
+    description: `Help design and run growth experiments across acquisition channels. Ideal for students and early-career builders with a strong analytic bent.`,
+    apply_link: "https://jobs.seedsprint.example/apply/2",
+    status: "published",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "sample-3",
+    title: "Backend Engineer (Go)",
+    company: "Nimbus Labs",
+    logo_url: null,
+    country: "United Kingdom",
+    location: "London (Remote OK)",
+    passout: 2023,
+  type: 'job',
+    description: `Design and implement scalable services in Go, focusing on reliability and clean APIs. Experience with Postgres and cloud infra is a plus.`,
+    apply_link: "https://jobs.nimbus.example/apply/3",
+    status: "published",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+];
+
+export default SAMPLE_JOBS;
