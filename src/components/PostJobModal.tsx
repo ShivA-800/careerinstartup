@@ -212,19 +212,10 @@ export default function PostJobModal({ isOpen, onClose, onSuccess, job = null }:
 
           <div>
             <label className="block text-sm font-medium text-zinc-300 mb-2">
-              Company Logo URL
+              Company Logo (optional)
             </label>
-            <input
-              type="url"
-              name="logo_url"
-              value={formData.logo_url}
-              onChange={handleChange}
-              className="w-full bg-zinc-800 text-white px-4 py-2.5 rounded-lg border border-zinc-700 focus:border-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-700"
-              placeholder="https://example.com/logo.png"
-            />
             {localStorage.getItem('admin_token') ? (
               <div className="mt-2">
-                <label className="block text-sm font-medium text-zinc-300 mb-2">Or upload logo (optional)</label>
                 <input type="file" accept="image/*" onChange={(e) => handleFileChange(e)} className="text-sm text-zinc-400" />
                 {uploading && (
                   <div className="mt-2 text-sm text-zinc-400">Uploading...</div>
@@ -234,10 +225,11 @@ export default function PostJobModal({ isOpen, onClose, onSuccess, job = null }:
                     <img src={logoPreview} alt="logo preview" className="h-16 w-auto rounded-md border border-zinc-700" />
                   </div>
                 )}
+                <div className="mt-2 text-sm text-zinc-500">You can leave this empty; uploading a logo is optional.</div>
               </div>
             ) : (
               <div className="mt-2 text-sm text-zinc-500">
-                To upload a logo directly, please log in as an admin. Public users can paste a logo URL above.
+                To upload a logo directly, please log in as an admin. Logos are optional and not required to post a job.
               </div>
             )}
           </div>

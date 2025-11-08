@@ -127,17 +127,24 @@ app.post('/api/admin-login', async (req, res) => {
 });
 
 // Google OAuth flow for admin sign-in
+// Google OAuth flow for admin sign-in
 app.get('/api/admin-google/login', (req, res) => {
   const clientId = process.env.GOOGLE_CLIENT_ID;
-  const serverBase = process.env.SERVER_BASE || `${req.protocol}://${req.get('host')}`;
   if (!clientId) return res.status(500).send('GOOGLE_CLIENT_ID not configured');
 
-  const redirectUri = `${serverBase.replace(/\/$/, '')}/api/admin-google/callback`;
+  // prefer explicit SERVER_BASE env for consistent redirect_uri; fall back to host
+  const serverBase = (process.env.SERVER_BASE || `${req.protocol}://${req.get('host')}`).replace(/\/$/, '');
+  const redirectUri = `${serverBase}/api/admin-google/callback`;
+
+  // debug log to help diagnose redirect_uri_mismatch problems during deploy
+  console.log('Google OAuth redirect_uri ->', redirectUri);
+
   const authUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth');
   authUrl.searchParams.set('client_id', clientId);
   authUrl.searchParams.set('redirect_uri', redirectUri);
   authUrl.searchParams.set('response_type', 'code');
   authUrl.searchParams.set('scope', 'openid email profile');
+  authUrl.searchParams.set('access_type', 'offline');
   authUrl.searchParams.set('prompt', 'select_account');
 
   res.redirect(authUrl.toString());
@@ -349,9 +356,16 @@ app.post('/api/jobs', async (req, res) => {
     const job = req.body || {};
     job.status = isAdmin ? (job.status || 'published') : 'pending';
     // coerce passout to integer if provided (frontend may send as string)
-    if (typeof job.passout !== 'undefined' && job.passout !== null && job.passout !== '') {
-      job.passout = Number(job.passout);
-      if (Number.isNaN(job.passout)) delete job.passout;
+    // If passout is an empty string the DB will reject it for integer columns
+    // so delete the field when it's empty. Otherwise try to coerce to Number
+    // and delete if the conversion fails.
+    if (typeof job.passout !== 'undefined') {
+      if (job.passout === null || job.passout === '') {
+        delete job.passout;
+      } else {
+        job.passout = Number(job.passout);
+        if (Number.isNaN(job.passout)) delete job.passout;
+      }
     }
     // normalize type field (job | internship)
     if (typeof job.type === 'string') {
@@ -376,10 +390,14 @@ app.put('/api/jobs/:id', async (req, res) => {
     if (!admin) return res.status(401).json({ error: 'Unauthorized' });
     const id = req.params.id;
     const updates = { ...req.body, updated_at: new Date().toISOString() };
-    // coerce passout if present
-    if (typeof updates.passout !== 'undefined' && updates.passout !== null && updates.passout !== '') {
-      updates.passout = Number(updates.passout);
-      if (Number.isNaN(updates.passout)) delete updates.passout;
+    // coerce passout if present; delete empty-string/null to avoid DB integer cast errors
+    if (typeof updates.passout !== 'undefined') {
+      if (updates.passout === null || updates.passout === '') {
+        delete updates.passout;
+      } else {
+        updates.passout = Number(updates.passout);
+        if (Number.isNaN(updates.passout)) delete updates.passout;
+      }
     }
     // normalize type if present
     if (typeof updates.type !== 'undefined' && updates.type !== null && updates.type !== '') {
