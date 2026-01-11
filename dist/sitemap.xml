@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://careerinstartup.app/</loc>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://careerinstartup.app/admin</loc>
+    
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://careerinstartup.app/jobs</loc>
+    
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://careerinstartup.app/job/ae4700d5-1145-4b96-b6e3-ee1949ddb402</loc>
+    <lastmod>2025-11-08T10:58:37.516Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://careerinstartup.app/job/d8d8f812-7e96-46d7-800b-6a23288dbfac</loc>
+    <lastmod>2025-11-08T10:53:39.127Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://careerinstartup.app/job/415d21ae-d6fb-431d-9321-41c9caa91cdc</loc>
+    <lastmod>2025-11-08T10:47:24.579Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://careerinstartup.app/job/02b94330-839e-4370-9a35-3ec0168a3464</loc>
+    <lastmod>2025-11-08T10:44:50.506Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://careerinstartup.app/job/be5b9045-baa5-43b4-8f6c-566b6bd2ee4b</loc>
+    <lastmod>2025-11-08T10:41:39.667Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://careerinstartup.app/job/e7ecda42-82ac-4c1e-85eb-0b8ab5f6f975</loc>
+    <lastmod>2025-11-08T10:35:16.402Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

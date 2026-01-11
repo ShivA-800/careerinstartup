@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="md:flex md:items-center md:justify-between">
           <div className="text-center md:text-left text-zinc-400">
             <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
-              <span className="text-2xl">❤️RSK</span>
+              <span className="text-2xl">❤️Shiva Kumar Radharapu</span>
               <span className="text-sm text-zinc-500">Startup Jobs & Internships</span>
             </div>
             <p className="text-sm text-zinc-500">{footerText}</p>
@@ -54,7 +54,7 @@ export default function Footer() {
               </a>
             </div>
 
-            <p className="text-sm mt-3">© {new Date().getFullYear()} ❤️RSK. All rights reserved.</p>
+            <p className="text-sm mt-3">© {new Date().getFullYear()} ❤️Shiva Kumar Radharapu. All rights reserved.</p>
           </div>
         </div>
 
